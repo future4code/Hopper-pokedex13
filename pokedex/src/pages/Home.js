@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
-import {PokemonsContext}  from "../context/PokemonsContext";
+import { PokemonsContext }  from "../context/PokemonsContext";
 import styled from 'styled-components';
 
 const Header = styled.header`
@@ -11,18 +11,28 @@ height:100px;
 `
 const Card = styled.main`
 display:flex;
+flex-wrap: wrap;
+justify-content: center;
 width:100%;
 height:100vh;
 background-color:#fff5ee;
 `
 const Pokemons = styled.div`
-display:grid;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
 background-color:#d3d3d3;
 border:2px solid;
 border-color:black;
-height:300px;
 width:200px;
 margin:20px 20px;
+h3 {
+    text-transform: uppercase;
+    text-align: center;
+}
+img {
+    object-fit: cover;
+}
 `
 const ButtonHeader = styled.button`
 height:40px;
@@ -33,7 +43,6 @@ width:100px;
 height:50px;
 `
 const BoxesButton = styled.div`
-margin-top:175px;
 display:flex;
 align-items:center;
 `
@@ -42,6 +51,17 @@ function Home() {
     const navigate = useNavigate();
     const pokemons = useContext(PokemonsContext);
 
+    const listPokemons = pokemons.map((pokemon, index) => {
+        return <Pokemons key={index}>
+                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`} />
+                <h3>{pokemon.name}</h3>
+                <BoxesButton>
+                    <ButtonBoxes>Adicionar a Pokedex</ButtonBoxes>
+                    <ButtonBoxes onClick={() => { navigate(`/${pokemon.name}`) }}>Detalhes</ButtonBoxes>
+                </BoxesButton>    
+            </Pokemons>
+    })
+
     return (
         <div>
             <Header>
@@ -49,14 +69,7 @@ function Home() {
                 <h2>Lista de Pokemons</h2>
             </Header>
             <Card>
-                <Pokemons>
-                <h2>Pokemon Img</h2>
-                <BoxesButton> 
-                    <ButtonBoxes>Adicionar a Pokedex</ButtonBoxes>
-                    <ButtonBoxes onClick={() => { navigate('/details') }}>Detalhes</ButtonBoxes>
-                </BoxesButton>    
-                </Pokemons>
-
+                {listPokemons}
             </Card>
         </div>
     )

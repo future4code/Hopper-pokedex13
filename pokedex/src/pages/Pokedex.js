@@ -66,7 +66,6 @@ function Pokedex() {
                 <Pokemons>
                 <h2>Imagem pokemon</h2>
                     <BoxesButton>
-                        
                         <ButtonBoxes>Remover</ButtonBoxes>
                         <ButtonBoxes onClick={() => { navigate('/details') }}>Detalhes</ButtonBoxes>
                     </BoxesButton>
