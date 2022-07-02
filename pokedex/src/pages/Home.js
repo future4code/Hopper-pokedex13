@@ -4,10 +4,21 @@ import { PokemonsContext }  from "../context/PokemonsContext";
 import styled from 'styled-components';
 
 const Header = styled.header`
+display:flex;
+align-items:center;
+justify-content:space-between;
+background: linear-gradient(180deg, rgba(212,99,66,1) 17%, rgba(255,25,0,0.9360119047619048) 78%);
+height:100px;
+`
+const H2 = styled.h2`
 font-family: 'Pokemon Solid', sans-serif;
 display:flex;
-background: linear-gradient(180deg, rgba(229,241,21,1) 6%, rgba(0,5,255,1) 78%);
-height:100px;
+font-size:30px;
+margin-right:550px;
+justify-content:center;
+-webkit-text-stroke: 0.5px #1E90FF;
+color: #FFFF00;
+
 `
 const Card = styled.main`
 display:flex;
@@ -24,6 +35,7 @@ justify-content: space-between;
 background-color:#d3d3d3;
 border:2px solid;
 border-color:black;
+border-radius:5px;
 width:200px;
 margin:20px 20px;
 h3 {
@@ -66,7 +78,7 @@ function Home() {
         <div>
             <Header>
                 <ButtonHeader onClick={() => { navigate('/pokedex') }}>Ir para a Pokedex</ButtonHeader>
-                <h2>Lista de Pokemons</h2>
+                <H2>Lista de Pokemons</H2>
             </Header>
             <Card>
                 {listPokemons}
