@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { PokemonsContext } from "./context/PokemonsContext";
 import Home from './pages/Home';
@@ -8,7 +8,7 @@ import axios from 'axios';
 
 function App() {
   const [pokemons, setPokemons] = useState([])
-  useState(() => {
+  useEffect(() => {
     axios.get('https://pokeapi.co/api/v2/pokemon?limit=20')
     .then((res) => {
       setPokemons(res.data.results)
@@ -18,7 +18,7 @@ function App() {
   }, [])
   return (
     <div className="App">
-      {pokemons.length&&<PokemonsContext.Provider value={pokemons}>
+      <PokemonsContext.Provider value={pokemons}>
         <BrowserRouter>
           <Routes>
             <Route path={'/'} element={<Home/>}/>
@@ -26,7 +26,7 @@ function App() {
             <Route path={'/:name'} element={<Details/>}/>
           </Routes>
         </BrowserRouter>
-      </PokemonsContext.Provider>}
+      </PokemonsContext.Provider>
     </div>
   );
 }
