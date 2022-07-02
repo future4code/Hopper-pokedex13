@@ -6,8 +6,19 @@ font-family: 'Pokemon Solid', sans-serif;
 padding-left:20px;
 display:flex;
 justify-content:space-between;
-background: linear-gradient(180deg, rgba(229,241,21,1) 6%, rgba(0,5,255,1) 78%);
+background: linear-gradient(180deg, rgba(212,99,66,1) 17%, rgba(255,25,0,0.9360119047619048) 78%);
 height:100px;
+`
+const H2 = styled.h2`
+font-family: 'Pokemon Solid', sans-serif;
+display:flex;
+font-size:30px;
+margin-left:550px;
+align-items:center;
+justify-content:center;
+-webkit-text-stroke: 0.5px #1E90FF;
+color: #FFFF00;
+
 `
 const Card = styled.main`
 display:flex;
@@ -56,9 +67,9 @@ function Pokedex() {
     return (
         <div>
             <Header>
-                <h2>
-                    Aqui é a pokedex
-                </h2>
+                <H2>
+                    Pokedex
+                </H2>
 
                 <ButtonHeader onClick={() => { navigate('/') }}>Voltar</ButtonHeader>
             </Header>
