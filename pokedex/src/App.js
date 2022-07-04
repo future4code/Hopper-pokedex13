@@ -1,32 +1,25 @@
-import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { PokemonsContext } from "./context/PokemonsContext";
+import { PokemonsProvider } from "./context/PokemonsContext";
+import { PokedexProvider } from './context/PokedexContext';
 import Home from './pages/Home';
 import Details from './pages/Details';
 import Pokedex from './pages/Pokedex';
-import axios from 'axios';
 
 function App() {
-  const [pokemons, setPokemons] = useState([])
-  useEffect(() => {
-    axios.get('https://pokeapi.co/api/v2/pokemon?limit=20')
-    .then((res) => {
-      setPokemons(res.data.results)
-    }).catch(() => {
 
-    })
-  }, [])
   return (
     <div className="App">
-      <PokemonsContext.Provider value={pokemons}>
-        <BrowserRouter>
-          <Routes>
-            <Route path={'/'} element={<Home/>}/>
-            <Route path={'/pokedex'} element={<Pokedex/>}/>
-            <Route path={'/:name'} element={<Details/>}/>
-          </Routes>
-        </BrowserRouter>
-      </PokemonsContext.Provider>
+      <PokemonsProvider>
+        <PokedexProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path={'/'} element={<Home/>}/>
+              <Route path={'/pokedex'} element={<Pokedex/>}/>
+              <Route path={'/:name'} element={<Details/>}/>
+            </Routes>
+          </BrowserRouter>
+        </PokedexProvider>
+      </PokemonsProvider>
     </div>
   );
 }
