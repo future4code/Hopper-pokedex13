@@ -73,10 +73,10 @@ function Home() {
     }
     
 
-    const listPokemons = pokemons && pokemons.map((pokemon, index) => {
+    const listPokemons = pokemons && pokemons.map((pokemon) => {
        
-        return <Pokemons key={index}>
-            <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${index + 1}.png`}></img>
+        return <Pokemons key={pokemon.id}>
+            <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`}/>
             <h3>{pokemon.name}</h3>
             <BoxesButton>
                 <ButtonBoxes onClick={() => {{adicionarPokemonPokedex(pokemon)}}}>Adicionar a Pokedex</ButtonBoxes>
