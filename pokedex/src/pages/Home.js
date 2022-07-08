@@ -1,7 +1,7 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext} from "react";
 import { useNavigate } from 'react-router-dom';
-import { PokemonsContext }  from "../context/PokemonsContext";
-import { PokedexContext }  from "../context/PokedexContext";
+import { PokemonsContext } from "../context/PokemonsContext";
+import { PokedexContext } from "../context/PokedexContext";
 import styled from 'styled-components';
 
 const Header = styled.header`
@@ -26,7 +26,7 @@ display:flex;
 flex-wrap: wrap;
 justify-content: center;
 width:100%;
-height:100vh;
+height:100%;
 background-color:#fff5ee;
 `
 const Pokemons = styled.div`
@@ -65,20 +65,24 @@ function Home() {
     const [pokemons, setPokemons] = useContext(PokemonsContext);
     const [pokedex, setPokedex] = useContext(PokedexContext);
 
-    const adicionarPokemonPokedex = (pokemonExcolhido) => {
-        setPokemons(pokemons.filter(pokemon => pokemon.name !== pokemonExcolhido.name))
-        setPokedex([...pokedex, pokemonExcolhido])
-    }
+    //adicionando na pokedex
 
-    const listPokemons = pokemons.map((pokemon, index) => {
+    const adicionarPokemonPokedex = (pokemonEscolhido) => {
+        setPokemons(pokemons.filter(pokemon => pokemon.name !== pokemonEscolhido.name)) // passando os parametros e filtrando para chamar na pokedex
+        setPokedex([...pokedex, pokemonEscolhido])// chamando na pokedex
+    }
+    
+
+    const listPokemons = pokemons && pokemons.map((pokemon, index) => {
+       
         return <Pokemons key={index}>
-                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index +1}.png`} />
-                <h3>{pokemon.name}</h3>
-                <BoxesButton>
-                    <ButtonBoxes onClick={() => {adicionarPokemonPokedex(pokemon)}}>Adicionar a Pokedex</ButtonBoxes>
-                    <ButtonBoxes onClick={() => { navigate(`/${pokemon.name}`) }}>Detalhes</ButtonBoxes>
-                </BoxesButton>    
-            </Pokemons>
+            <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${index + 1}.png`}></img>
+            <h3>{pokemon.name}</h3>
+            <BoxesButton>
+                <ButtonBoxes onClick={() => {{adicionarPokemonPokedex(pokemon)}}}>Adicionar a Pokedex</ButtonBoxes>
+                <ButtonBoxes onClick={() => { navigate(`/${pokemon.name}`) }}>Detalhes</ButtonBoxes>
+            </BoxesButton>
+        </Pokemons>
     })
 
     return (
