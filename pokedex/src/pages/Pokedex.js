@@ -1,7 +1,9 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { PokedexContext } from "../context/PokedexContext";
+
+
 
 const Header = styled.header`
 font-family: 'Pokemon Solid', sans-serif;
@@ -36,6 +38,7 @@ height:300px;
 width:200px;
 margin:20px 20px;
     img {
+        width:200px;
         object-fit: cover;
     }
 `
@@ -48,26 +51,37 @@ width:100px;
 height:50px;
 `
 const BoxesButton = styled.div`
-margin-top:145px;
+margin-top:50px;
 display:flex;
 align-items:center;
 `
 
 function Pokedex() {
+   
     const [pokedex, setPokedex] = useContext(PokedexContext);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+     
+
+    const removerPokemonPokedex = (pokemonEscolhido) => {
+       console.log("removerPokemon")
+       setPokedex(pokedex.filter(pokemon => pokemonEscolhido.name !== pokemon.name))
+      
+       }
 
     const listPokemons = pokedex.map((pokemon) => {
         return (
             <Pokemons key={pokemon.id}>
-                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`} />
+                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`} />
+                <h3>{pokemon.name}</h3>
                 <BoxesButton>
-                    <ButtonBoxes>Remover</ButtonBoxes>
+                    <ButtonBoxes onClick={() =>{removerPokemonPokedex(pokemon)}}>Remover</ButtonBoxes>
                     <ButtonBoxes onClick={() => { navigate(`/${pokemon.name}`) }}>Detalhes</ButtonBoxes>
                 </BoxesButton>
             </Pokemons>
         )     
     })
+
+   
 
     return (
         <div>
@@ -80,6 +94,7 @@ function Pokedex() {
             </Header>
             <Card>
                 {listPokemons}
+               
             </Card>
         </div>
 
