@@ -2,21 +2,21 @@
 
 Nome dos integrantes: 
 - Daniel Segatto
-- Erica lima 
+- Erica Lima 
 - Filipe Vidal
-
 
 Link do Surge: hulking-discussion.surge.sh
 
 O que funciona:
-- Esta funcionando todas as funçoes
+- Todos os itens funcionam
+
 - Item 2
 
 O que não funciona: 
 - Item 3
 - Item 4
 
-imagem da home responsiva e normal
 
-![image](https://user-images.githubusercontent.com/97070330/178089258-1bada6c9-d493-401b-a88c-5ebd4ab0c3e1.png) 
-![image](https://user-images.githubusercontent.com/97070330/178089273-1265dfd8-832d-456d-8c72-90713fe7dd15.png)
+![image](https://user-images.githubusercontent.com/97070330/178089370-cd8e1cc1-7021-46f3-9ac7-8a6d0c9c5818.png)
+![image](https://user-images.githubusercontent.com/97070330/178089379-6124dad5-a35b-4f99-a69b-be0c8e7e8b81.png)
+
