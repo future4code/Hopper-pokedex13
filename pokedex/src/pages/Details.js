@@ -2,25 +2,64 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
+import Pokebola from '../img/pokeball.png'
+
+const Pokeball = styled.div`
+background: linear-gradient(56deg, rgba(255,235,0,0.6895133053221288) 0%, rgba(71,58,224,0.7847514005602241) 21%, rgba(71,58,224,0.7175245098039216) 74%, rgba(255,235,0,0.6418942577030813) 94%);
+`
 
 const Header = styled.header`
 font-family: 'Pokemon Solid', sans-serif;
 display:flex;
 justify-content:space-between;
-background: linear-gradient(180deg, rgba(212,99,66,1) 17%, rgba(255,25,0,0.9360119047619048) 78%);
 height:100px;
 h2 {
     text-transform: uppercase;
     letter-spacing: 0.3em;
-    -webkit-text-stroke: 0.5px #1E90FF;
+    -webkit-text-stroke: 1.5px #2e3fbd;
      color: #FFFF00;
 }
+
+
 `
 const ButtonHeader = styled.button`
 height:40px;
+width:80px;
+border-radius:5px;
 margin:30px 20px;
+border:0.5px solid #e0aa34;
+background:none;
+cursor: pointer;
 
+&:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(46,63,189,0.2);
+    background-color:rgba(46,63,189,0.2);
+}
 `
+const ButtonHeader2 = styled.button`
+display:flex;
+height:40px;
+margin-top:20px;
+margin-right:20px;
+background:none;
+border:none;
+cursor: pointer;
+
+img{
+    width:60px;
+}
+&:hover{
+    transform: translateY(-3px);
+}
+
+@media (max-width: 600px){
+ img{
+    display:none;
+ }
+}
+`
+
 
 const Card = styled.main`
 display:flex;
@@ -28,7 +67,7 @@ flex-wrap: wrap;
 justify-content: center;
 align-items: start;
 width:100%;
-background-color:#fff5ee;
+
 `
 const BoxImagens = styled.div`
 width: 200px;
@@ -114,11 +153,11 @@ function Details() {
     })
 
     return (
-        <div>
+        <Pokeball>
             <Header>
                 <ButtonHeader onClick={() => { navigate('/') }}>Voltar</ButtonHeader>
                 <h2>{name}</h2>
-                <ButtonHeader onClick={() => { navigate('/pokedex') }}>Ir para Pokedex</ButtonHeader>
+                <ButtonHeader2 onClick={() => { navigate('/pokedex') }}><img src={Pokebola}/></ButtonHeader2>
             </Header>
 
             <Card>
@@ -144,7 +183,7 @@ function Details() {
                     </div>
                 </BoxTypesMoves>
             </Card>
-        </div>
+        </Pokeball>
 
     )
 

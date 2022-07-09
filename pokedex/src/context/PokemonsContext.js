@@ -13,7 +13,7 @@ export const PokemonsProvider = ({ children }) => {
       .then((res) => {
         setPokemons(res.data.results.map(pokemon => {
           id++;
-          return {...pokemon, id: id}
+          return {...pokemon, id:id}
         }));
       })
       .catch(() => {});
